@@ -18,19 +18,20 @@ t_options   ft_save_struct(char **tmp, va_list ap)
     t_options stru;
 
     ft_saveflag(tmp, &stru);
-    ft_save_wd(tmp, ap, &stru);
-    ft_save_pr(tmp,ap, &stru);
-    ft_save_conv(tmp, &stru);
+    stru.width = ft_save_wd(tmp, ap, &stru);
+    stru.precision = ft_save_pr(tmp,ap, &stru);
+    stru.conv = ft_save_conv(tmp);
 
 }
 
 int     ft_handler(char **tmp, va_list ap)
 {
     t_options   tab;
+	t_func		*f;
     int         i;
     
     tab = ft_save_struct(tmp, ap);
-    ft_dispatch(tab);
-    i =ft_print_res(tmp, ap, tab);
+    f = ft_dispatch(tab);
+	i = f(tab, ap);
     return (i);
 }

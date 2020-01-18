@@ -39,11 +39,9 @@ typedef	enum	e_index
 
 //prototypes
 int			ft_printf(const char *format, ...);
-t_options	*ft_options(void);
 char		*ft_itoa_base(int n, int base);
 int			ft_putchar_ret(char c);
 int     	ft_handler(char **tmp, va_list ap);
-int			ft_replace(char *fmt, va_list ap, char **res);
 int			ft_treat_d(t_options option, va_list ap, char **res);
 int			ft_treat_c(t_options option, va_list ap, char **res);
 int			ft_treat_s(t_options option, va_list ap, char **res);
@@ -53,8 +51,5 @@ int			ft_treat_u(t_options option, va_list ap, char **res);
 int			ft_treat_x(t_options option, va_list ap, char **res);
 int			ft_treat_perc(t_options option, va_list ap, char **res);
 int			ft_treat_xmaj(t_options option, va_list ap, char **res);
-int	save_width(char *fmt, t_options *option, va_list ap, int i);
-int	save_precision(char *fmt, t_options *option, va_list ap, int i);
-int	save_flags(char *fmt, t_options *option, int i);
 
 #endif

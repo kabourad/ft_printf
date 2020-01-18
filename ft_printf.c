@@ -12,15 +12,6 @@
 
 #include "ft_printf.h"
 
-static void	ft_special_join(char **result, char **format, int start, int len)
-{
-	char	*tmp;
-
-	tmp = *result;
-	*result = ft_strjoin(tmp, ft_substr(*format, start, len));
-	free(tmp);
-}
-
 int		ft_printf(const char *format, ...)
 {
 	int				i;
