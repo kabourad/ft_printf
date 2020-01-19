@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:25:49 by kabourad          #+#    #+#             */
-/*   Updated: 2020/01/18 20:22:27 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/01/19 21:41:19 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ typedef	enum	e_index
 //prototypes
 int			ft_printf(const char *format, ...);
 char		*ft_itoa_base(int n, int base);
+void		ft_save_flag(char **tmp, t_options *stru);
 int			ft_putchar_ret(char c);
 int     	ft_handler(char **tmp, va_list ap);
+int			ft_save_width(char **tmp, va_list ap);
+int			ft_save_precision(char **tmp, va_list ap);
 int			ft_treat_d(t_options option, va_list ap, char **res);
 int			ft_treat_c(t_options option, va_list ap, char **res);
 int			ft_treat_s(t_options option, va_list ap, char **res);

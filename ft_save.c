@@ -6,16 +6,68 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:31:21 by kabourad          #+#    #+#             */
-/*   Updated: 2020/01/15 13:33:10 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/01/19 21:41:21 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void	ft_save_flag(char **tmp, t_options stru)
+void	ft_save_flag(char **tmp, t_options *stru)
 {
-	
+	if (**tmp == '-')
+	{
+		(*stru).flag_left = 1;
+		while (**tmp && **tmp == '-')
+			tmp++;
+	}
+	if (**tmp == '0')
+	{
+		(*stru).flag_zero = 1;
+		while (**tmp && **tmp == '0')
+			tmp++;
+	}
+}
+
+int		ft_save_width(char **tmp, va_list ap)
+{
+	int i;
+
+	i = 0;
+	if (**tmp == '*')
+	{
+		i = va_arg(ap, int);
+		while (**tmp == '*')
+			tmp++;
+	}
+	else
+	{
+		i = ft_atoi(*tmp);
+		while (ft_isdigit(**tmp))
+			tmp++;
+	}
+	return (i);
+}
+
+int		ft_save_precision(char **tmp, va_list ap)
+{
+	int i;
+
+	i = 0;
+	if (**tmp == '.')
+		tmp++;
+	if (**tmp == '*')
+	{
+		i = va_arg(ap, int);
+		while (**tmp == '*')
+			tmp++;
+	}
+	else
+	{
+		i = ft_atoi(*tmp);
+		while (ft_isdigit(**tmp))
+			tmp++;
+	}
+	return (i);
 }
 
 
@@ -58,10 +110,10 @@ void	ft_save_flag(char **tmp, t_options stru)
 
 
 
-// int	save_flags(char *fmt, t_options *option, int i)
+	*tmp_options *option, int i)
 // {
 // 	if (fmt[i] == '-')
-// 	{
+// 		{
 // 		option->flag_left = 1;
 // 		while (fmt[i] == '-' && fmt[i])
 // 			i++;
