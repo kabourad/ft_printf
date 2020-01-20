@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 19:43:47 by kabourad          #+#    #+#             */
-/*   Updated: 2020/01/18 20:04:39 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/01/20 20:40:03 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@ int		ft_printf(const char *format, ...)
 {
 	int				i;
 	va_list			ap;
-	char 			*tmp;
+	char			*tmp;
 
 	va_start(ap, format);
-	i	= 0;
+	i = 0;
 	tmp = (char *)format;
 	while (*tmp)
 	{
 		if (*tmp == '%')
-		{
-			tmp++;
 			i += ft_handler(&tmp, ap);
-		}
 		else
-		{
 			i += ft_putchar_ret(*tmp);
-		}
 	}
 	va_end(ap);
-	return ();
+	return (i);
 }
