@@ -1,0 +1,3 @@
+/Users/kabourad/Desktop/CLionProjects/printf/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/kabourad/Desktop/CLionProjects/printf/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kabourad/Desktop/CLionProjects/printf/cmake-build-debug/CMakeFiles/printf.dir
