@@ -6,13 +6,13 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 20:25:36 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/25 20:15:08 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/06 20:22:59 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	with_flagleft_s(char *c, t_options tab)
+static int	with_flagleft_s(char *c, t_options tab)
 {
 	int i;
 	int y;
@@ -41,7 +41,7 @@ int	with_flagleft_s(char *c, t_options tab)
 	return (y);
 }
 
-int	without_flagleft_s(char *c, t_options tab)
+static int	without_flagleft_s(char *c, t_options tab)
 {
 	int i;
 	int y;
@@ -68,7 +68,7 @@ int	without_flagleft_s(char *c, t_options tab)
 	return (y);
 }
 
-int	compose_result_s(t_options tab, char *c)
+static int	compose_result_s(t_options tab, char *c)
 {
 	int i;
 
@@ -80,7 +80,7 @@ int	compose_result_s(t_options tab, char *c)
 	return (i);
 }
 
-int	ft_treat_s(t_options tab, va_list *ap, char *pr)
+int			ft_treat_s(t_options tab, va_list *ap, char *pr)
 {
 	char	*c;
 	int		i;
@@ -88,6 +88,8 @@ int	ft_treat_s(t_options tab, va_list *ap, char *pr)
 	(void)pr;
 	i = 0;
 	c = va_arg(*ap, char *);
+	if (!c)
+		c = "(null)";
 	check_flags_s(&tab);
 	modify_pr_s(&tab, c);
 	modify_wd_s(&tab);

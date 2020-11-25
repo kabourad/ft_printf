@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:41:38 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/14 21:24:06 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/05 16:22:04 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char			*ft_utoa(unsigned int n)
 		return (NULL);
 	while (i >= start)
 	{
-		allocator[i] =(n % 10) + '0';
+		allocator[i] = (n % 10) + '0';
 		n /= 10;
 		i--;
 	}

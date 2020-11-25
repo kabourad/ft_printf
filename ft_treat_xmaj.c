@@ -22,6 +22,7 @@ int	ft_treat_xmaj(t_options tab, va_list *ap, char *pr)
 	i = 0;
 	c = va_arg(*ap, unsigned int);
 	num = ft_utoamaj_base(c, 16);
+	check_flags_x(&tab);
 	modify_pr_x(&tab, num);
 	modify_wd_x(&tab, num);
 	i += compose_result_x(tab, num);

@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 13:06:28 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/22 00:19:49 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/06 20:23:08 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	modify_wd_s(t_options *tab)
 		(*tab).width = 0;
 }
 
-int	print_only_s(char *c, int b)
+int		print_only_s(char *c, int b)
 {
 	int y;
 	int i;

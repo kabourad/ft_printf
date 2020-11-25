@@ -6,13 +6,13 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 20:24:28 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/21 21:38:57 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/07 22:25:32 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	compose_result_c(t_options tab, char c)
+int			compose_result_c(t_options tab, char c)
 {
 	int i;
 
@@ -24,7 +24,7 @@ int	compose_result_c(t_options tab, char c)
 	return (i);
 }
 
-int	ft_treat_c(t_options tab, va_list *ap, char *pr)
+int			ft_treat_c(t_options tab, va_list *ap, char *pr)
 {
 	char	c;
 	int		i;

@@ -6,12 +6,13 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 19:43:47 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/04 18:46:34 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/09 23:29:50 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -25,23 +26,16 @@ int	ft_printf(const char *format, ...)
 	while (*tmp)
 	{
 		if (*tmp == '%')
+		{
 			i += ft_handler(&tmp, &ap);
+			tmp++;
+		}
 		else
+		{
 			i += ft_putchar_ret(*tmp);
-		tmp++;
+			tmp++;
+		}
 	}
 	va_end(ap);
 	return (i);
 }
-//#define  STR "|hello%u|\n",  0
-#define  STR "|hello%p|\n",0
-//#define  STR "|hello%d|\n",  INT_MAX + 2
-//#define  STR "|hello%10d|\n", -10
-
-int main()
-{
-  int a = ft_printf(STR);
-  int b  = printf(STR);
-  printf("%i %i\n", a, b);
-}
-// .s .0 .0s s

@@ -6,14 +6,13 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 20:25:14 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/21 21:38:52 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/06 19:47:30 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-int	with_flagleft_p(char *num, t_options tab)
+static int	with_flagleft_p(char *num, t_options tab)
 {
 	int count;
 	int i;
@@ -21,31 +20,57 @@ int	with_flagleft_p(char *num, t_options tab)
 	count = 0;
 	i = 0;
 	count += print_p(num, tab);
-	while (i < tab.width)
+	if (tab.width && tab.flag_zero == 0)
 	{
-		count += ft_putchar_ret(' ');
-		i++;
+		while (i < tab.width)
+		{
+			count += ft_putchar_ret(' ');
+			i++;
+		}
+	}
+	if (tab.width && tab.flag_zero == 1)
+	{
+		if (!tab.precision)
+			count += put_ox();
+		while (i < tab.width)
+		{
+			count += ft_putchar_ret('0');
+			i++;
+		}
 	}
 	return (count);
 }
 
-int	without_flagleft_p(char *num, t_options tab)
+static int	without_flagleft_p(char *num, t_options tab)
 {
 	int count;
 	int i;
 
 	count = 0;
 	i = 0;
-	while (i < tab.width)
+	if (tab.width && tab.flag_zero == 0)
 	{
-		count += ft_putchar_ret(' ');
-		i++;
+		while (i < tab.width)
+		{
+			count += ft_putchar_ret(' ');
+			i++;
+		}
+	}
+	if (tab.width && tab.flag_zero == 1)
+	{
+		if (!tab.precision)
+			count += put_ox();
+		while (i < tab.width)
+		{
+			count += ft_putchar_ret('0');
+			i++;
+		}
 	}
 	count += print_p(num, tab);
 	return (count);
 }
 
-int	compose_result_p(t_options tab, char *num)
+static int	compose_result_p(t_options tab, char *num)
 {
 	int i;
 
@@ -57,7 +82,7 @@ int	compose_result_p(t_options tab, char *num)
 	return (i);
 }
 
-int	ft_treat_p(t_options tab, va_list *ap, char *pr)
+int			ft_treat_p(t_options tab, va_list *ap, char *pr)
 {
 	unsigned long long	c;
 	int					i;
@@ -68,8 +93,8 @@ int	ft_treat_p(t_options tab, va_list *ap, char *pr)
 	c = va_arg(*ap, unsigned long long);
 	num = ft_ulltoa_base(c, 16);
 	check_flags_p(&tab);
-	modify_wd_p(&tab, num);
 	modify_pr_p(&tab, num);
+	modify_wd_p(&tab, num);
 	i += compose_result_p(tab, num);
 	free(num);
 	return (i);

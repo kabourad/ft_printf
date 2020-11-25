@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 20:24:28 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/18 17:19:13 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/09 22:12:23 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_flags_c(t_options *tab)
 		(*tab).width = (*tab).width - 1;
 }
 
-int	with_flagleft_c(char c, t_options tab)
+int		with_flagleft_c(char c, t_options tab)
 {
 	int i;
 	int y;
@@ -52,7 +52,7 @@ int	with_flagleft_c(char c, t_options tab)
 	return (y);
 }
 
-int	without_flagleft_c(char c, t_options tab)
+int		without_flagleft_c(char c, t_options tab)
 {
 	int i;
 	int y;

@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:00:49 by kabourad          #+#    #+#             */
-/*   Updated: 2020/02/14 21:47:20 by kabourad         ###   ########.fr       */
+/*   Updated: 2020/03/09 22:11:58 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ t_options	ft_save_struct(char **tmp, va_list *ap)
 
 	stru.flag_left = 0;
 	stru.flag_zero = 0;
+	stru.dot = 0;
+	stru.negative = 0;
 	stru.conv = '\0';
 	ft_save_flag(tmp, &stru);
 	stru.width = ft_save_width(tmp, ap);
-	stru.precision = ft_save_precision(tmp, ap);
+	stru.precision = ft_save_precision(tmp, ap, &stru);
 	stru.conv = **tmp;
 	stru.verif = stru.precision;
+	stru.min = 0;
 	return (stru);
 }
 
@@ -56,12 +59,14 @@ int			ft_handler(char **tmp, va_list *ap)
 	char		*pr;
 	int			i;
 
-	pr = *tmp;
 	(*tmp)++;
+	pr = *tmp;
 	tab = ft_save_struct(tmp, ap);
 	ft_treat = ft_dispatch(tab);
+	if (ft_treat == ft_treat_error && tab.conv)
+		pr = *tmp;
 	i = ft_treat(tab, ap, pr);
-	if (ft_treat == ft_treat_error)
-		*tmp = pr + i;
+	if (!tab.conv)
+		(*tmp)--;
 	return (i);
 }
